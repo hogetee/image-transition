@@ -113,7 +113,7 @@ async def test_project(dut):
         frame.save(f"output/frame{i}.png")
 
 
-@cocotb.test()
+@cocotb.test(skip=not glob.glob("reference/frame*.png"))
 async def compare_reference(dut):
 
     for img in glob.glob("output/frame*.png"):
